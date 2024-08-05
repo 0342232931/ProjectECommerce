@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>HOME</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://localhost:8080/css/list-laptop.css">
+</head>
+<body>
+<div class="row">
+    <div id="thanh-cong-cu">
+        <h3 class="btn btn-secondary"><b>QUẢN LÝ</b></h3>
+        <hr>
+        <a th:href="@{/admin/listLaptop}" type="button"><b>THÔNG TIN LAPTOP</b></a>
+        <a th:href="@{/admin/listScreen}" type="button"><b>THÔNG TIN MÀN HÌNH</b></a>
+        <a th:href="@{/admin/listKeyboard}" type="button"><b>THÔNG TIN BÀN PHÍM</b></a>
+        <a th:href="@{/admin/listMouse}" type="button"><b>THÔNG TIN CHUỘT</b></a>
+        <a th:href="@{/admin/listUser}" type="button"><b>THÔNG TIN NGƯỜI DÙNG</b></a>
+    </div>
+    <div>
+        <div class="container"  style="margin-top:20px">
+            <h3 align="center"><b>DANH SÁCH CHUỘT</b></h3>
+            <hr>
+            <div class="row" id="mo-rong">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-1">
+                    <a type="button" th:href="@{/home}" class="btn btn-success">Trang Chủ</a>
+                </div>
+                <div class="col-lg-3">
+                </div>
+                <div class="col-lg-6">
+                    <form class="d-flex" role="search" method="get">
+                        <input class="form-control me-2" type="search" name="lastName" placeholder="Nhập Vào Tên" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Tìm Kiếm</button>
+                    </form>
+                </div>
+                <div class="col-lg-1">
+                </div>
+            </div>
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                <td>ID</td>
+                <td>Tên Tài Khoản</td>
+                <td>Mật Khẩu</td>
+                <td>Được Phân Quyền</td>
+                <td>Tên Người Sử Dụng Tài Khoản</td>
+                <td>Ghi Chú</td>
+                </thead>
+                <tbody>
+                <tr th:each="s : ${accounts}">
+                    <td>
+                        <span th:text="${s.id}"></span>
+                    </td>
+                    <td>
+                        <span th:text="${s.userName}"></span>
+                    </td>
+                    <td>
+                        <span th:text="${s.password}"></span>
+                    </td>
+                    <td>
+                        <span th:text="${s.roleAccount.roleName}"></span>
+                    </td>
+                    <td>
+                        <span th:text="${s.user.lastName}"></span>
+                    </td>
+                    <td width="170px">
+                        <a type="button" th:href="@{/admin/deleteAccount(id=${s.id})}" class="btn btn-danger"onclick="return confirm('Bạn Có Chắc Chắn Rằng Muốn Xóa?');">Xóa</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

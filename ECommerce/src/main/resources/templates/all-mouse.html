@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:text-align="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>About Me</title>
+    <link rel="stylesheet" href="http://localhost:8080/css/detail.css">
+    <link rel="stylesheet" href="http://localhost:8080/css/all-product.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+<!-- Navbar -->
+<div class="my-navbar">
+    <div class="row">
+        <div class="col-lg-4">
+            <span><img width="80px" height="30px" src="http://localhost:8080/Image/logoremovebg.png"> <b class="text-panel">LAPTOP NHẤT THIÊN PHÚ</b></span>
+        </div>
+        <div class="col-lg-2">
+            <b class="my-text">Hệ Thống Chi Nhánh</b>
+        </div>
+        <div class="col-lg-1">
+            <b class="my-text">Trả Góp</b>
+        </div>
+        <div class="col-lg-1">
+            <b class="my-text">Bảo Hành</b>
+        </div>
+        <div class="col-lg-1">
+            <b class="my-text">Liên Hệ</b>
+        </div>
+        <div class="col-lg-3">
+            <a type="button" class="btn btn-outline-danger hotline-style my-text"><b>☎️ Hotline: 0342232931</b></a>
+        </div>
+    </div>
+</div>
+<!-- End Navbar -->
+
+<!-- Content -->
+<div>
+    <div style="background-color: blue">
+        <img width="100%" height="600px" src="http://localhost:8080/Image/backtoschool.png">
+    </div>
+    <div>
+        <img width="100%" height="80px" src="http://localhost:8080/Image/new.png">
+    </div>
+    <div>
+        <img style="margin-top:20px;margin-left:370px" width="50%" height="370px" src="http://localhost:8080/Image/qua-tang.png">
+    </div>
+    <div>
+        <img width="100%" height="80px" style="margin-top:10px" src="http://localhost:8080/Image/title.png">
+    </div>
+</div>
+<div style="background-color: gray">
+    <div class="row" style="margin-top:20px">
+        <div class="col-lg-1">
+
+        </div>
+        <div class="col-lg-10" style="background-color:white;border-radius:10px;margin-top:20px;margin-bottom:20px">
+            <div class="row" th:unless="${mouses == null}">
+                <div class="col-lg-3" th:each="l : ${mouses}">
+                    <div class="card" style="width: 18rem;margin-left:10px;margin-top:10px;margin-bottom:10px">
+                        <img th:src="@{${'/admin/displayImageMouse?id=' + l.id}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <div class="row">
+                                <h5 class="card-title" th:text="${l.mouseName}"></h5>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <span class="card-text" style="color:gray;margin-left:10px;text-decoration: line-through;font-size:16px">Giá Gốc: <span th:text="${l.price}"></span> vnđ</span><br>
+                                    <span class="card-text" style="color:red;margin-left:10px;margin-bottom: 20px;font-size:16px">Khuyến Mãi: <span  th:text="${l.discount}"></span> vnđ</span><br>
+                                </div>
+                            </div>
+                            <a style="margin-top:10px" th:href="@{/detail/mouseDetail(id=${l.id})}" class="btn btn-primary">Xem Sản Phẩm</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-1">
+
+        </div>
+    </div>
+</div>
+<!-- End Content -->
+
+<!-- Footer -->
+<div class="container" style="background: #003366; color: white; border-radius:20px; margin-bottom: -10px">
+    <div class="row" style="margin-top: 20px">
+        <div class="col-lg-3" style="margin-top: 20px">
+            <h5><b>Thông Tin Liên Hệ</b></h5><br>
+            <b><span>SĐT: 0342232931</span><br>
+                <span>Email: trinhhaison2004@gmail.com</span><br>
+                <span>Facebook: ..........</span><br>
+                <span>Zalo: 0342232931</span><br>
+                <span>Website: https://nhatthienphu.vn</span><br></b>
+        </div>
+        <div class="col-lg-3" style="margin-top: 20px">
+            <h5><b>Hệ Thống Cửa Hàng</b></h5><br>
+            <span><b>Danh Sách Các Của Hàng Trên Toàn Quốc</b></span>
+        </div>
+        <div class="col-lg-3" style="margin-top: 20px">
+            <h5><b>Hình Thức Thanh Toán</b></h5>
+            <div class="row" style="margin-bottom: 10px;margin-top: 20px">
+                <div class="col-lg-3">
+                    <img src="https://hoanghamobile.com/Content/web/img/logo-visa.png" width="80px" height="30px">
+                </div>
+                <div class="col-lg-3">
+                    <img src="https://hoanghamobile.com/Content/web/img/logo-master.png" width="80px" height="30px">
+                </div>
+                <div class="col-lg-6">
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 10px">
+                <div class="col-lg-3">
+                    <img src="https://hoanghamobile.com/Content/web/img/logo-jcb.png" width="80px" height="30px">
+                </div>
+                <div class="col-lg-3">
+                    <img src="https://hoanghamobile.com/Content/web/img/logo-samsungpay.png" width="80px" height="30px">
+                </div>
+                <div class="col-lg-6">
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 10px">
+                <div class="col-lg-3">
+                    <img src="https://hoanghamobile.com/Content/web/img/logo-atm.png" width="80px" height="30px">
+                </div>
+                <div class="col-lg-3">
+                    <img src="https://hoanghamobile.com/Content/web/img/logo-vnpay.png" width="80px" height="30px">
+                </div>
+                <div class="col-lg-6">
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 10px">
+                <div class="col-lg-3">
+                    <img src="https://hoanghamobile.com/Content/web/img/logo-zalo.png" width="80px" height="30px">
+                </div>
+                <div class="col-lg-3">
+                </div>
+                <div class="col-lg-6">
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3" style="margin-top: 20px">
+            <h5><b>Hình Thức Vận Chuyển</b></h5>
+            <div class="row" style="margin-bottom: 10px;margin-top: 20px">
+                <div class="col-lg-3">
+                    <img src="https://hoanghamobile.com/Content/web/img/nhattin.jpg" width="80px" height="30px">
+                </div>
+                <div class="col-lg-3">
+                    <img src="https://hoanghamobile.com/Content/web/img/vnpost.jpg" width="80px" height="30px">
+                </div>
+                <div class="col-lg-6">
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 10px;margin-top: 20px">
+            <span style="text-align:center;font-size:12px"><b> © 2020. CÔNG TY CỔ PHẦN XÂY DỰNG VÀ ĐẦU TƯ THƯƠNG MẠI HOÀNG HÀ. MST: 0106713191. (Đăng ký lần đầu: Ngày 15 tháng 12 năm 2014, Đăng ký thay đổi ngày 24/11/2022)<br>
+                            GP số 426/GP-TTĐT do sở TTTT Hà Nội cấp ngày 22/01/2021<br>
+                    Địa chỉ: Số 885 Đường Tam Trinh, Phường Yên Sở, Quận Hoàng Mai, Thành Phố Hà Nội, Việt Nam. Điện thoại: 1900.2091. Chịu trách nhiệm nội dung: Trịnh Hải Sơn.</b></span>
+    </div>
+</div>
+<!-- End Footer -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+</html>

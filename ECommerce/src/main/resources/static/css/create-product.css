@@ -1,0 +1,22 @@
+#imageUpload {
+    display: none; /* Ẩn nút upload mặc định */
+    }
+
+    label[for="imageUpload"] {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    }
+
+    label[for="imageUpload"]:hover {
+    background-color: #eee;
+}
+
+.text-header {
+    text-align: center;
+    font-size: 28px;
+    color: black;
+    padding: 10px;
+    margin-bottom: 20px;
+}

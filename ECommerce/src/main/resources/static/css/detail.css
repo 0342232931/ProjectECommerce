@@ -1,0 +1,28 @@
+#buttonClick a{
+    width: 350px;
+    height: 70px;
+    text-align: center;
+}
+
+#table-my-style td{
+    color: black;
+    border: 1px solid black;
+    font-weight: bold;
+}
+
+.page-content {
+    background-color: #a2b3b3;
+}
+
+.text-panel{
+    font-family:trirong;
+    font-size:16px;
+    font-style:italic;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px
+}

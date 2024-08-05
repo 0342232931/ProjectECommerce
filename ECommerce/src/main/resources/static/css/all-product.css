@@ -1,0 +1,42 @@
+.my-navbar{
+    width: 100%;
+    height:60px
+}
+
+.my-navbar .col-lg-1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.my-navbar .text-panel{
+    font-family:trirong;
+    font-size:16px;
+    font-style:italic;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.my-navbar .col-lg-4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.my-navbar .col-lg-2{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.my-navbar .col-lg-3{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.my-navbar .hotline-style{
+    margin-top:10px;
+    border-radius: 20px;
+    width:250px;
+    height:40px
+}

@@ -1,0 +1,104 @@
+ #myMenubar a{
+    background: white;
+    color:black;
+    text-align: left;
+    border:none
+}
+
+#menuContent {
+    background : #003366;
+    width: 100%;
+    height:70px;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+
+}
+#menuContent a{
+    text-decoration:none;
+}
+
+#menuContent img{
+    margin-top:8px;
+    width: 30px;
+    height: 30px;
+    color:black;
+}
+
+#menuContent p{
+    margin-top:5px;
+    color:white;
+
+}
+
+#laptop-list {
+    background:#E8E8E8;
+    margin-top:10px
+}
+
+#laptop-list .col-lg-3{
+    margin-top: 20px;
+    margin-bottom:10px
+}
+
+#screen-list {
+    background:#E8E8E8;
+    margin-top:10px
+}
+
+#screen-list .col-lg-3{
+    margin-top: 20px;
+    margin-bottom:10px
+}
+
+#mouse-list {
+    background:#E8E8E8;
+    margin-top:10px
+}
+
+#mouse-list .col-lg-3{
+    margin-top: 20px;
+    margin-bottom:10px
+}
+
+#keyboard-list {
+    background:#E8E8E8;
+    margin-top:10px
+}
+
+#keyboard-list .col-lg-3{
+    margin-top: 20px;
+    margin-bottom:10px
+}
+
+#news_style {
+    background:#E8E8E8;
+    margin-top:10px
+}
+
+#news_style .col-lg-3{
+    margin-top: 20px;
+    margin-bottom:10px
+}
+
+#news_style span{
+    font-size:20px;
+    margin-top:10px
+}
+
+.display_flex_text {
+    display: flex;
+}
+
+.text-panel{
+    font-family:trirong;
+    font-size:16px;
+    font-style:italic;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px
+}

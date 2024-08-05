@@ -1,0 +1,29 @@
+#thanh-cong-cu {
+    position: absolute; /* Định vị tuyệt đối */
+    top: 0; /* Vị trí trên cùng */
+    left: -330px; /* Vị trí bên trái, ẩn ngoài màn hình */
+    width: 340px; /* Chiều rộng */
+    height: 100%; /* Chiều cao */
+    background-color: #999999; /* Màu nền */
+    transition: left 0.5s ease; /* Hiệu ứng chuyển tiếp */
+}
+
+#thanh-cong-cu:hover {
+    left: 0; /* Khi di chuột qua, thanh công cụ trượt ra */
+}
+
+#thanh-cong-cu a{
+    margin-top:10px;
+    margin-left:10px;
+    margin-right:10px
+}
+
+#thanh-cong-cu h3{
+    margin-top:100px;
+    margin-left:10px;
+    margin-right:10px
+}
+
+#mo-rong a{
+    margin-bottom:20px
+}

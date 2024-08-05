@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:text-align="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>About Me</title>
+    <link rel="stylesheet" href="http://localhost:8080/css/detail.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+<!-- Navbar -->
+<div class="page-content">
+    <div style="background-color: white;">
+        <ul class="nav nav-tabs" id="navbar" style="background : #003366; width: 100%" >
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" th:href="@{/home}" style="color : black"><b>Tranng chủ</b></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/aboutMe}" style="color : #FFFFFF"><b>Giới Thiệu</b></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" style="color : #FFFFFF"><b>Liên Hệ</b></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" style="color : #FFFFFF"><b>Tuyển Dụng</b></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" style="color : #FFFFFF"><b>Chi Nhánh</b></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://chatgpt.com/" style="color : #FFFFFF"><b>Trợ Giúp</b></a>
+            </li>
+            <li class="nav-item" th:unless="${#authentication != null}">
+                <a class="nav-link" th:href="@{/login}" style="color : #FFFFFF"><b>Đăng Nhập</b></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:unless="${#authentication == null}" onclick="return confirm('Bạn Có Chắc Chắn Rằng Muốn Thoát?')" th:href="@{/logout}" style="color : #FFFFFF"><b>Đăng Xuất</b></a>
+            </li>
+        </ul>
+        <div class="container" style="margin-top: 20px" >
+            <div class="row">
+                <div class="col-lg-3">
+                    <span><img width="80px" height="30px"  src="http://localhost:8080/Image/logoremovebg.png"> <b class="text-panel">LAPTOP NHẤT THIÊN PHÚ</b></span>
+                </div>
+                <div class="col-lg-5">
+                    <form method="get" th:action="@{/user/findProduct}">
+                        <div class="input-group">
+                            <select th:name="type" class="btn btn-outline-primary" style="width:150px;height:50px;margin-top:12px;margin-right:8px;border-radius:5px">
+                                <option th:value="Laptop">Laptop</option>
+                                <option th:value="Screen">Màn Hình</option>
+                                <option th:value="Keyboard">Bàn Phím</option>
+                                <option th:value="Mouse">Chuột</option>
+                                <option th:value="HeadPhone">Tai Nghe</option>
+                                <option th:value="Chip">Chip</option>
+                                <option th:value="SmartWatch">Smart Watch</option>
+                                <option th:value="PhuKien">Phụ Kiện</option>
+                            </select>
+                            <input style="margin-top:12px" type="search" name="productName" class="form-control rounded" placeholder="Hôm nay bạn muốn tìm gì? ^^" aria-label="Search" aria-describedby="search-addon" />
+                            <button style="margin-top:12px" type="submit" class="btn btn-outline-primary" data-mdb-ripple-init>search</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-2" style="height: 50px">
+                    <button class="btn btn-danger" style="width:120px;height:60px;margin-left:30px" sec:authorize="isAuthenticated()"><b>Kiểm
+                        Tra Đơn Hàng</b></button>
+                </div>
+                <div class="col-lg-1" sec:authorize="hasRole('USER')">
+                    <button type="button" class="btn position-relative">
+                        <a th:href="@{/user/showCart}"> <img style="margin-top:5px" src="http://localhost:8080/Image/grocery-store.png" width="30px"
+                                                             height="30px"></a>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    <h6 th:each="c : ${countProductInCart}" th:text="${c}"></h6>
+                <span class="visually-hidden">unread messages</span>
+                </span>
+                    </button>
+                </div>
+                <div class="col-lg-1" sec:authorize="isAuthenticated()">
+                    <button sec:authorize="hasRole('ADMIN')"  class="btn btn-outline-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Quản Lý</button>
+                    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel" style="background: #CD950C">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"><b>QUẢN LÝ THÔNG TIN</b></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <hr>
+                        <div class="offcanvas-body">
+                            <div class="d-grid gap-2" id="myMenubar">
+                                <a th:href="@{/admin/listLaptop}" class="btn btn-secondary"><b>Quản Lý Thông Tin Laptop</b></a><br>
+                                <a th:href="@{/admin/listKeyboard}" class="btn btn-secondary"><b>Quản Lý Thông Tin Bàn Phím</b></a><br>
+                                <a th:href="@{/admin/listScreen}" class="btn btn-secondary"><b>Quản Lý Thông Tin Màn Hình</b></a><br>
+                                <a th:href="@{/admin/listMouse}" class="btn btn-secondary"><b>Quản Lý Thông Tin Chuột</b></a><br>
+                                <a th:href="@{/admin/listAccount}" class="btn btn-secondary"><b>Quản Lý Thông Tin Tài Khoản</b></a><br>
+                                <a th:href="@{/admin/listUser}" class="btn btn-secondary"><b>Quản Lý Thông Tin Người Dùng</b></a><br>
+                                <a th:href="@{/admin/listVoucher}" class="btn btn-secondary"><b>Quản Lý Thông Tin Voucher</b></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Navbar -->
+
+    <!-- Content -->
+    <div class="container" style="margin-top: 20px;">
+        <div class="row" style="background-color: white; border-radius: 10px;">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-10" th:object="${keyboard}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <img style="margin-top: 30px;align-items: center;" width="100%" height="100%" th:src="@{${'/admin/displayImageKeyboard?id=' + keyboard.id}}">
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <b><span th:text="${keyboard.keyboardName}" style="margin-top: 20px;font-size:28px"></span></b><br>
+                                <span class="card-text" style="color:gray;margin-left:10px;text-decoration: line-through;font-size:16px;margin-top:25px">Giá Gốc: <span th:text="${keyboard.price}"></span> vnđ</span><br>
+                                <span class="card-text" style="color:red;margin-left:10px;font-size:16px;margin-top:-10px">Khuyến Mãi: <span  th:text="${keyboard.discount}"></span> vnđ</span><br>
+                            </div>
+                            <hr>
+                            <div class="row" id="buttonClick">
+                                <div class="col-lg-6">
+                                    <a href="#" class="btn btn-danger"><h5 style="margin-top: 4px;">Mua Ngay</h5>
+                                        <p style="margin-top: -8px;">Giao tận nơi hoặc nhận tại cửa hàng</p>
+                                    </a>
+                                </div>
+                                <div class="col-lg-6">
+                                    <a th:href="@{/user/addProductToCart(id=${keyboard.id},type=${keyboard.type})}" id="myButton"  class="btn btn-warning"><h5 style="margin-top: 15px;">Thêm Vào Giỏ Hàng</h5></a>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <h5 style="color: red;">ƯU ĐÃI KHI MUA KÈM LAPTOP</h5>
+                                    <b><span>🌟Giảm tới 20% giá của Màn Hình</span></b>
+                            </div>
+                            <hr>
+                            <div class="row" style="margin-bottom: 20px;">
+                                <div class="container" style="background-color: gray;border-radius: 5px;">
+                                    <div>
+                                        <h5 style="margin-top: 10px;"><b>Khuyến Mãi</b></h5>
+                                    </div>
+                                    <b><span>✅Mua Microsoft Office kèm PC GVN giảm 300k <br>
+                                            ✅Giảm ngay 300.000đ khi mua thêm RAM với PC GVN.<br>
+                                            ✅Giảm ngay 200.000đ khi nâng cấp SSD cho PC GVN. </span></b>
+                                    <div class="row" style="margin-bottom: 20px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-1">
+            </div>
+        </div>
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-lg-1" style="margin-right: -20px;">
+            </div>
+            <div class="col-lg-7"  style="background: white; border-radius: 5px;margin-right: 10px;">
+                <div class="row" style="margin-top: 10px;" th:object="${keyboardDetail}">
+                    <h4><b>Mô Tả Sản Phẩm</b></h4>
+                    <p th:text="${keyboardDetail.about}"></p>
+                </div>
+                <div class="row" style="margin-bottom: 20px;"></div>
+            </div>
+            <div class="col-lg-3" style="margin-left: 10px; background: white; border-radius: 5px;width: 400px;">
+                <div class="col-lg-12">
+                    <div class="container">
+                        <h5 style="margin-top: 20px;"><b>Tin Tức Về Công Nghệ</b></h5>
+                        <hr>
+                        <div class="row" style="margin-top: 10px;">
+                            <div class="col-lg-3">
+                                <img src="https://i1-sohoa.vnecdn.net/2024/07/29/a-nh-chu-p-ma-n-hi-nh-2024-07-5096-4067-1722228222.png?w=240&h=144&q=100&dpr=1&fit=crop&s=o31QJZckNKyVKnnId_HbMQ"
+                                     width="80px" height="50px" style="border-radius: 5px;">
+                            </div>
+                            <div class="col-lg-9">
+                                <span style="font-weight: 500;">Thuê bao Internet di động lần đầu vượt 90% dân số</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row" style="margin-top: 10px;">
+                            <div class="col-lg-3">
+                                <img src="https://i1-sohoa.vnecdn.net/2024/07/29/google-chrome-logo-with-passwo-6647-3752-1722219470.png?w=240&h=144&q=100&dpr=1&fit=crop&s=TCzT422oC98Sr59416yNPQ"
+                                     width="80px" height="50px" style="border-radius: 5px;">
+                            </div>
+                            <div class="col-lg-9">
+                                <span style="font-weight: 500;">Google xin lỗi vì 15 triệu mật khẩu người dùng Chrome 'biến mất'</span>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom: 10px;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-1">
+            </div>
+        </div>
+        <div class="row">
+
+        </div>
+    </div>
+    <!-- End Content -->
+
+    <!-- Footer -->
+    <div class="container" style="background: #003366; color: white; border-radius:20px; margin-bottom: -10px">
+        <div class="row" style="margin-top: 20px">
+            <div class="col-lg-3" style="margin-top: 20px">
+                <h5 ><b>Thông Tin Liên Hệ</b></h5><br>
+                <b><span>SĐT: 0342232931</span><br>
+                    <span>Email: trinhhaison2004@gmail.com</span><br>
+                    <span>Facebook: ..........</span><br>
+                    <span>Zalo: 0342232931</span><br>
+                    <span>Website: https://nhatthienphu.vn</span><br></b>
+            </div>
+            <div class="col-lg-3" style="margin-top: 20px">
+                <h5><b>Hệ Thống Cửa Hàng</b></h5><br>
+                <span><b>Danh Sách Các Của Hàng Trên Toàn Quốc</b></span>
+            </div>
+            <div class="col-lg-3" style="margin-top: 20px">
+                <h5><b>Hình Thức Thanh Toán</b></h5>
+                <div class="row" style="margin-bottom: 10px;margin-top: 20px">
+                    <div class="col-lg-3">
+                        <img src="https://hoanghamobile.com/Content/web/img/logo-visa.png" width="80px" height="30px">
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="https://hoanghamobile.com/Content/web/img/logo-master.png" width="80px" height="30px">
+                    </div>
+                    <div class="col-lg-6">
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 10px">
+                    <div class="col-lg-3">
+                        <img src="https://hoanghamobile.com/Content/web/img/logo-jcb.png" width="80px" height="30px">
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="https://hoanghamobile.com/Content/web/img/logo-samsungpay.png" width="80px" height="30px">
+                    </div>
+                    <div class="col-lg-6">
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 10px">
+                    <div class="col-lg-3">
+                        <img src="https://hoanghamobile.com/Content/web/img/logo-atm.png" width="80px" height="30px">
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="https://hoanghamobile.com/Content/web/img/logo-vnpay.png" width="80px" height="30px">
+                    </div>
+                    <div class="col-lg-6">
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 10px">
+                    <div class="col-lg-3">
+                        <img src="https://hoanghamobile.com/Content/web/img/logo-zalo.png" width="80px" height="30px">
+                    </div>
+                    <div class="col-lg-3">
+                    </div>
+                    <div class="col-lg-6">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3" style="margin-top: 20px">
+                <h5><b>Hình Thức Vận Chuyển</b></h5>
+                <div class="row" style="margin-bottom: 10px;margin-top: 20px">
+                    <div class="col-lg-3">
+                        <img src="https://hoanghamobile.com/Content/web/img/nhattin.jpg" width="80px" height="30px">
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="https://hoanghamobile.com/Content/web/img/vnpost.jpg" width="80px" height="30px">
+                    </div>
+                    <div class="col-lg-6">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 10px;margin-top: 20px">
+            <span style="text-align:center;font-size:12px"><b> © 2020. CÔNG TY CỔ PHẦN XÂY DỰNG VÀ ĐẦU TƯ THƯƠNG MẠI HOÀNG HÀ. MST: 0106713191. (Đăng ký lần đầu: Ngày 15 tháng 12 năm 2014, Đăng ký thay đổi ngày 24/11/2022)<br>
+                            GP số 426/GP-TTĐT do sở TTTT Hà Nội cấp ngày 22/01/2021<br>
+                    Địa chỉ: Số 885 Đường Tam Trinh, Phường Yên Sở, Quận Hoàng Mai, Thành Phố Hà Nội, Việt Nam. Điện thoại: 1900.2091. Chịu trách nhiệm nội dung: Trịnh Hải Sơn.</b></span>
+        </div>
+    </div>
+</div>
+<!-- End Footer -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
